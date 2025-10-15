@@ -18,3 +18,8 @@ node_modules
 out
 .env
 .vercel
+node_modules
+.next
+out
+.env
+.vercel
