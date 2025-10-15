@@ -142,17 +142,6 @@ export default function PrayerApp() {
           padding: "0 1rem",
         }}
       >
-        <h1
-          style={{
-            color: "#b11a1a",
-            fontSize: "2rem",
-            marginBottom: "0.5rem",
-            letterSpacing: "1px",
-          }}
-        >
-          PARTNERING IN PRAYER
-        </h1>
-
         <h2
           style={{
             fontSize: "1.25rem",
@@ -175,7 +164,7 @@ export default function PrayerApp() {
           The country you are praying for will be highlighted in{" "}
           <strong style={{ color: "#b11a1a" }}>red</strong> so you can see it on
           the map. If you see a country in{" "}
-          <strong style={{ color: "#007ee5" }}>blue</strong>, it means someone
+          <strong style={{ color: "#007ee5" }}>blue</strong>, someone
           else is currently praying for that country.
         </p>
       </section>
