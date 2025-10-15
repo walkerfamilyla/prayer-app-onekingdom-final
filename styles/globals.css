@@ -119,14 +119,12 @@ button.restart:hover {
   background: #fafafa;
   padding-bottom: 1rem;
 }
-
 .map-container svg {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  display: block;
+  width: 118vw;                /* slightly narrower for better framing */
+  max-width: none;
+  transform: translateX(-14vw); /* pushes map farther left */
   height: auto;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
 @media (max-width: 600px) {
@@ -292,15 +290,12 @@ header {
   margin: 0;
   overflow: hidden;
 }
-
-.map-wrapper-vertical .map-container svg {
-  width: 105vw;             /* ✅ narrower map fits entire globe */
+.map-container svg {
+  width: 120vw;               /* wider than the viewport */
+  max-width: none;
+  transform: translateX(-10vw); /* centers and removes white margin */
   height: auto;
-  transform: scale(1.05);   /* ✅ gentler zoom */
-  margin: 0 auto;
   display: block;
-  opacity: 0.95;
-  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 /* === Responsive adjustments === */
@@ -460,4 +455,15 @@ path {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem; /* ✅ adds breathing room */
+}
+.map-bg {
+  margin-left: 0;
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.map-bg svg {
+  display: block;
+  margin: 0;
+  padding: 0;
 }

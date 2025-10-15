@@ -22,7 +22,7 @@ export default function PrayerApp() {
 
   const current = data[index];
   const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-  const projection = geoEqualEarth().scale(150).translate([450, 270]);
+  const projection = geoEqualEarth().scale(175).translate([470, 265]);
 
   // Move to next prayer
   const handleNext = () => {

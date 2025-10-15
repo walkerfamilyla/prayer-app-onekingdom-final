@@ -13,3 +13,8 @@ build
 Thumbs.db
 
 
+node_modules
+.next
+out
+.env
+.vercel
