@@ -1,0 +1,423 @@
+/* styles/globals.css */
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+header {
+  background-color: #b11a1a;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+header img {
+  display: block;
+  margin: 0 auto;
+  width: 320px;   /* ✅ Larger width */
+  max-width: 90%; /* Keeps it responsive on smaller screens */
+  height: auto;
+}
+
+header .tagline {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.prayer-card {
+  max-width: 640px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.prayer-card.fade {
+  opacity: 0.5;
+}
+
+.partner {
+  color: #b11a1a;              /* bold red */
+  text-transform: uppercase;   /* all caps */
+  font-size: 1.8rem;           /* large headline */
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.country {
+  color: #222;                 /* dark gray/black */
+  font-size: 1.1rem;           /* smaller subtitle */
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* BUTTON STYLES */
+button.next {
+  background-color: #b11a1a; /* One Kingdom red */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+button.next:hover {
+  background-color: #8e1515;
+}
+
+button.restart {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+button.restart:hover {
+  background-color: #222;
+}
+
+/* === Background world map === */
+.map-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/worldmap.png'); /* Make sure worldmap.png is in /public */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08; /* light fade behind content */
+  z-index: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.map-overlay.fade {
+  opacity: 0.03; /* fades during transitions */
+}
+
+main,
+header {
+  position: relative;
+  z-index: 1;
+}
+.partner-photo {
+  width: 280px;
+  height: auto;
+  border-radius: 12px;
+  margin: 1rem auto;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+/* === Highlight pulse only for the active country === */
+.geography-active {
+  animation: pulse 2s infinite;
+}
+
+path[fill="#b11a1a"] {
+  animation: pulse 2s infinite;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+/* === MAP + CARD LAYOUT === */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.prayer-card.fade {
+  opacity: 0;
+}
+
+.partner {
+  font-size: 2rem;
+  color: #b11a1a;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.25em;
+}
+
+.country {
+  font-size: 1.25rem;
+  color: #222;
+  margin-bottom: 1em;
+}
+
+.partner-photo {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  margin: 1rem auto;
+  display: block;
+}
+
+.scripture, .prompt {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: #000;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button {
+  border: none;
+  background-color: #b11a1a;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #8e1515;
+}
+
+/* === RESPONSIVE LAYOUT WITH FIXED HEADER AND FULL MAP === */
+.map-wrapper-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  min-height: 100vh;
+  background: #fafafa;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Keep top red header fixed */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #b11a1a;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Prayer Card stays centered */
+.map-wrapper-vertical .prayer-card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
+  width: 90%;
+  max-width: 750px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  text-align: center;
+  z-index: 10;
+}
+
+/* World map fills remaining space */
+.map-wrapper-vertical .map-container {
+  flex: 1;
+  width: 100%;
+  height: 60vh; /* bigger section for map visibility */
+  margin: 0;
+  overflow: hidden;
+}
+
+.map-wrapper-vertical .map-container svg {
+  width: 105vw;             /* ✅ narrower map fits entire globe */
+  height: auto;
+  transform: scale(1.05);   /* ✅ gentler zoom */
+  margin: 0 auto;
+  display: block;
+  opacity: 0.95;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* === Responsive adjustments === */
+@media (max-width: 900px) {
+  .map-wrapper-vertical .map-container {
+    height: 50vh;
+  }
+
+  .map-wrapper-vertical .map-container svg {
+    width: 150vw;
+    transform: scale(1.35);
+  }
+
+  .map-wrapper-vertical .prayer-card {
+    width: 95%;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .map-wrapper-vertical .map-container {
+    height: 45vh;
+  }
+
+  .map-wrapper-vertical .map-container svg {
+    width: 170vw;
+    transform: scale(1.45);
+  }
+
+  .partner-photo {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .partner {
+    font-size: 1.6rem;
+  }
+
+  .country {
+    font-size: 1rem;
+  }
+}
+.map-wrapper-vertical .map-container svg {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 1000px; /* ✅ Keeps map centered visually */
+}
+/* === REMOVE CARD BACKGROUND, SHOW MAP BEHIND TEXT === */
+.prayer-card.overlay {
+  position: relative;
+  z-index: 2;
+  background: none;            /* ✅ remove white background */
+  backdrop-filter: none;       /* ✅ no blur effect */
+  box-shadow: none;            /* ✅ remove shadow */
+  border-radius: 0;            /* ✅ no rounded corners */
+  color: #111;                 /* ✅ readable text */
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+/* make text readable over map without a card */
+.prayer-card.overlay h2,
+.prayer-card.overlay h3,
+.prayer-card.overlay p {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* optional subtle gradient behind text for readability */
+.prayer-card.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.15)
+  );
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 8px;
+}
+.map-background-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.map-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.prayer-overlay {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  background: none;
+  padding-top: 2rem;
+}
+
+.partner-photo {
+  width: 250px;
+  height: auto;
+  border-radius: 12px;
+  margin: 1rem auto;
+  display: block;
+}
+/* Force prayer text to black even if overlay is white */
+.prayer-overlay,
+.prayer-overlay .prompt,
+.prayer-overlay .scripture,
+.prayer-overlay p,
+.prayer-overlay strong {
+  color: #000 !important;
+}
+/* Move the buttons lower under the prayer text */
+.prayer-overlay .buttons {
+  margin-top: 4.5rem;  /* increase space between text and buttons */
+  padding-bottom: 2rem; /* gives breathing room at bottom */
+}
+/* Disable hover highlight on map */
+.geography-active,
+path {
+  pointer-events: none !important;
+}
+/* Limit scripture text width and center it */
+.scripture {
+  max-width: 600px;
+  margin: 1rem auto;   /* centers it horizontally */
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #000;
+  text-align: center;
+}
