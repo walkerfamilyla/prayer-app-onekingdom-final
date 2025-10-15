@@ -110,6 +110,31 @@ button.restart:hover {
   z-index: 0;
   transition: opacity 0.8s ease-in-out;
 }
+/* === Sticky map at the top === */
+.map-container {
+  position: sticky;
+  top: 100px;        /* stays below the header */
+  width: 100%;
+  z-index: 5;
+  background: #fafafa;
+  padding-bottom: 1rem;
+}
+
+.map-container svg {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: block;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .map-container {
+    top: 80px;
+    padding-bottom: 0.5rem;
+  }
+}
 
 .map-overlay.fade {
   opacity: 0.03; /* fades during transitions */
@@ -420,4 +445,19 @@ path {
   font-size: 1.1rem;
   color: #000;
   text-align: center;
+}
+.scripture {
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+  color: #000;
+  max-width: 600px;
+  width: 90%; /* ✅ responsive on mobile */
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem; /* ✅ adds breathing room */
 }
