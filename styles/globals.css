@@ -286,19 +286,18 @@ header {
 .map-wrapper-vertical .map-container {
   flex: 1;
   width: 100%;
-  height: 60vh; /* bigger section for map visibility */
+  height: 60vh;
   margin: 0;
   overflow: hidden;
 }
 .map-container svg {
-  width: 120vw;               /* wider than the viewport */
+  width: 120vw;
   max-width: none;
-  transform: translateX(-10vw); /* centers and removes white margin */
+  transform: translateX(-10vw);
   height: auto;
   display: block;
 }
 
-/* === Responsive adjustments === */
 @media (max-width: 900px) {
   .map-wrapper-vertical .map-container {
     height: 50vh;
@@ -343,17 +342,18 @@ header {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 1000px; /* ✅ Keeps map centered visually */
+  max-width: 1000px;
 }
+
 /* === REMOVE CARD BACKGROUND, SHOW MAP BEHIND TEXT === */
 .prayer-card.overlay {
   position: relative;
   z-index: 2;
-  background: none;            /* ✅ remove white background */
-  backdrop-filter: none;       /* ✅ no blur effect */
-  box-shadow: none;            /* ✅ remove shadow */
-  border-radius: 0;            /* ✅ no rounded corners */
-  color: #111;                 /* ✅ readable text */
+  background: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  border-radius: 0;
+  color: #111;
   max-width: 750px;
   margin: 2rem auto;
   padding: 1.5rem;
@@ -361,20 +361,17 @@ header {
   transition: opacity 0.4s ease;
 }
 
-/* make text readable over map without a card */
 .prayer-card.overlay h2,
 .prayer-card.overlay h3,
 .prayer-card.overlay p {
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
-/* optional subtle gradient behind text for readability */
 .prayer-card.overlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
+  background: linear-gradient(to bottom,
     rgba(255, 255, 255, 0.55),
     rgba(255, 255, 255, 0.15)
   );
@@ -382,6 +379,7 @@ header {
   pointer-events: none;
   border-radius: 8px;
 }
+
 .map-background-wrapper {
   position: relative;
   width: 100%;
@@ -414,7 +412,7 @@ header {
   margin: 1rem auto;
   display: block;
 }
-/* Force prayer text to black even if overlay is white */
+
 .prayer-overlay,
 .prayer-overlay .prompt,
 .prayer-overlay .scripture,
@@ -422,159 +420,95 @@ header {
 .prayer-overlay strong {
   color: #000 !important;
 }
-/* Move the buttons lower under the prayer text */
+
 .prayer-overlay .buttons {
-  margin-top: 4.5rem;  /* increase space between text and buttons */
-  padding-bottom: 2rem; /* gives breathing room at bottom */
+  margin-top: 4.5rem;
+  padding-bottom: 2rem;
 }
-/* Disable hover highlight on map */
+
 .geography-active,
 path {
   pointer-events: none !important;
 }
-/* Limit scripture text width and center it */
+
 .scripture {
   max-width: 600px;
-  margin: 1rem auto;   /* centers it horizontally */
+  margin: 1rem auto;
   line-height: 1.6;
   font-size: 1.1rem;
   color: #000;
   text-align: center;
-}
-.scripture {
-  margin: 0 auto 1rem;
-  line-height: 1.6;
-  color: #000;
-  max-width: 600px;
-  width: 90%; /* ✅ responsive on mobile */
-  text-align: center;
+  width: 90%;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem; /* ✅ adds breathing room */
-}
-.map-bg {
-  margin-left: 0;
-  padding-left: 0;
-  overflow: hidden;
-}
-
-.map-bg svg {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-/* Crop a little off the bottom of the map area */
-.map-bg {
-  overflow: hidden;
-  clip-path: inset(0 0 15% 0); /* trims bottom ~10% */
-}
-/* === Partner photo: size + responsive positioning === */
-.partner-photo {
-  width: 180px;          /* default desktop size */
-  height: auto;
-  border-radius: 12px;
-  margin: 2rem auto 0;   /* moves image down slightly */
-  display: block;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Medium screens (tablets) */
-@media (max-width: 900px) {
-  .partner-photo {
-    width: 160px;        /* slightly smaller */
-    margin: 1.8rem auto 0;
-  }
-}
-
-/* Small screens (phones) */
-@media (max-width: 600px) {
-  .partner-photo {
-    width: 130px;        /* smaller for mobile */
-    margin: 1.5rem auto 0;
-  }
-}
-/* === Responsive layout spacing adjustments === */
-
-/* Desktop default */
-.prayer-overlay {
-  padding-top: 2rem;   /* adds breathing room above image */
-}
-
-.scripture {
-  max-width: 600px;    /* keeps text narrow and readable */
-  margin: 1.5rem auto 0;
-  line-height: 1.6;
-}
-
-/* Tablet view */
-@media (max-width: 900px) {
-  .prayer-overlay {
-    padding-top: 1.5rem;
-  }
-
-  .scripture {
-    max-width: 480px;  /* narrower scripture for tablets */
-    font-size: 0.95rem;
-    margin: 1.25rem auto 0;
-  }
-}
-
-/* Mobile view */
-@media (max-width: 600px) {
-  .prayer-overlay {
-    padding-top: 1rem;
-  }
-
-  .partner-photo {
-    margin-top: 2.25rem;  /* pushes image down slightly */
-  }
-
-  .scripture {
-    max-width: 90%;      /* fills screen neatly */
-    font-size: 0.9rem;
-    margin: 1rem auto 0;
-  }
-
-  .buttons {
-    margin-top: 2.25rem;  /* keeps buttons separated */
-  }
-}
-.partner {
-  margin-top: 0.5rem;
-  margin-bottom: 0.15rem; /* tighten space before country */
-}
-
-.country {
-  margin-top: 0;           /* remove extra gap above */
-  margin-bottom: 1rem;     /* keep breathing room below */
-}
-/* === Final override for partner photo position === */
-.partner-photo {
-  margin-top: 12rem !important;  /* pushes photo farther down */
-}
-@media (max-width: 600px) {
-  .partner-photo {
-    margin-top: 3.5rem !important;  /* slightly less on phones */
-  }
-}
 header .tagline {
   margin-top: 0.5rem;
   margin-bottom: 0.2rem;
   line-height: 1.3;
 }
-/* Reduce white space between the red header and the first heading */
 .prayer-overlay {
-  margin-top: 0 !important;     /* remove outer spacing above section */
-  padding-top: 0.5rem !important; /* slight breathing room */
+  margin-top: 0 !important;
+  padding-top: 0.5rem !important;
 }
 
 .prayer-overlay h1,
 .prayer-overlay h2,
 .prayer-overlay h3 {
-  margin-top: 0.25rem !important; /* reduce gap under the red bar */
+  margin-top: 0.25rem !important;
+}
+
+.partner {
+  margin-top: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.country {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* === Fix partner photo overlap on mobile === */
+@media (max-width: 600px) {
+  .partner-photo {
+    margin-top: 6rem !important; /* ✅ push image lower below the map */
+  }
+}
+/* === Partner photo: final unified size + positioning === */
+.partner-photo {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  margin: 2.5rem auto 0;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .partner-photo {
+    width: 150px;
+    margin-top: 3rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .partner-photo {
+    width: 130px;
+    margin-top: 12rem !important;  /* ✅ moves image lower */
+    position: relative;
+    z-index: 5;
+  }
+}
+
+/* Partner and country spacing */
+.partner {
+  margin-top: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.country {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
