@@ -144,10 +144,10 @@ header {
   z-index: 1;
 }
 .partner-photo {
-  width: 280px;
+  width: 200px;
   height: auto;
   border-radius: 12px;
-  margin: 1rem auto;
+  margin: 300rem auto 1rem auto; /* ⬅ increased top margin */
   display: block;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -471,4 +471,110 @@ path {
 .map-bg {
   overflow: hidden;
   clip-path: inset(0 0 15% 0); /* trims bottom ~10% */
+}
+/* === Partner photo: size + responsive positioning === */
+.partner-photo {
+  width: 180px;          /* default desktop size */
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem auto 0;   /* moves image down slightly */
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 900px) {
+  .partner-photo {
+    width: 160px;        /* slightly smaller */
+    margin: 1.8rem auto 0;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .partner-photo {
+    width: 130px;        /* smaller for mobile */
+    margin: 1.5rem auto 0;
+  }
+}
+/* === Responsive layout spacing adjustments === */
+
+/* Desktop default */
+.prayer-overlay {
+  padding-top: 2rem;   /* adds breathing room above image */
+}
+
+.scripture {
+  max-width: 600px;    /* keeps text narrow and readable */
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+/* Tablet view */
+@media (max-width: 900px) {
+  .prayer-overlay {
+    padding-top: 1.5rem;
+  }
+
+  .scripture {
+    max-width: 480px;  /* narrower scripture for tablets */
+    font-size: 0.95rem;
+    margin: 1.25rem auto 0;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+  .prayer-overlay {
+    padding-top: 1rem;
+  }
+
+  .partner-photo {
+    margin-top: 2.25rem;  /* pushes image down slightly */
+  }
+
+  .scripture {
+    max-width: 90%;      /* fills screen neatly */
+    font-size: 0.9rem;
+    margin: 1rem auto 0;
+  }
+
+  .buttons {
+    margin-top: 2.25rem;  /* keeps buttons separated */
+  }
+}
+.partner {
+  margin-top: 0.5rem;
+  margin-bottom: 0.15rem; /* tighten space before country */
+}
+
+.country {
+  margin-top: 0;           /* remove extra gap above */
+  margin-bottom: 1rem;     /* keep breathing room below */
+}
+/* === Final override for partner photo position === */
+.partner-photo {
+  margin-top: 12rem !important;  /* pushes photo farther down */
+}
+@media (max-width: 600px) {
+  .partner-photo {
+    margin-top: 3.5rem !important;  /* slightly less on phones */
+  }
+}
+header .tagline {
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+/* Reduce white space between the red header and the first heading */
+.prayer-overlay {
+  margin-top: 0 !important;     /* remove outer spacing above section */
+  padding-top: 0.5rem !important; /* slight breathing room */
+}
+
+.prayer-overlay h1,
+.prayer-overlay h2,
+.prayer-overlay h3 {
+  margin-top: 0.25rem !important; /* reduce gap under the red bar */
 }

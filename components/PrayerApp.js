@@ -146,7 +146,7 @@ export default function PrayerApp() {
           style={{
             fontSize: "1.25rem",
             color: "#222",
-            marginBottom: "0.75rem",
+            marginBottom: "0.5rem",
             fontWeight: "600",
           }}
         >
@@ -199,21 +199,22 @@ export default function PrayerApp() {
         </div>
 
         {/* === PRAYER CARD === */}
-        <section className={`prayer-overlay ${fade ? "fade" : ""}`}>
-          <h2 className="partner">{current.partner}</h2>
-          <h3 className="country">{current.country}</h3>
+      <section className={`prayer-overlay ${fade ? "fade" : ""}`}>
+  <img
+    src={`/partners/${(current.image || "")
+      .toLowerCase()
+      .replace(/\s+/g, "_")
+      .replace(/[^a-z0-9_.-]/g, "")}`}
+    alt={current.partner || "Partner"}
+    className="partner-photo"
+    onError={(e) => (e.currentTarget.src = "/worldmap.png")}
+  />
 
-          <img
-            src={`/partners/${(current.image || "")
-              .toLowerCase()
-              .replace(/\s+/g, "_")
-              .replace(/[^a-z0-9_.-]/g, "")}`}
-            alt={current.partner || "Partner"}
-            className="partner-photo"
-            onError={(e) => (e.currentTarget.src = "/worldmap.png")}
-          />
+  <h2 className="partner">{current.partner}</h2>
+  <h3 className="country">{current.country}</h3>
 
-          <p className="scripture">{current.scripture}</p>
+  <p className="scripture">{current.scripture}</p>
+
 
           {/* Centered stacked buttons */}
           <div
